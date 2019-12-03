@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+BTC:
+  id: 1
+  endpoint: 'https://data.exchange.coinjar.com/products/BTCAUD/ticker'
+  name: BTCAUD
+
+TBD:
+  id: 2
+  endpoint: 'https://data.exchange.coinjar.com/products/ETHAUD/ticker'
+  name: TBDAUD

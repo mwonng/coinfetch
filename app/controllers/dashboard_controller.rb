@@ -1,10 +1,16 @@
-require "http"
-
 class DashboardController < ApplicationController
+  include TransactionsHelper
+  
   def index
-    response = HTTP.get('https://data.exchange.coinjar.com/products/BTCAUD/ticker').to_s;
-    res_json = JSON.parse(response)
-    @res = res_json['bid']
-    puts @res
+    @currencies = Currency.all;
+    return @currencies
+  end
+
+  def capture
+    Currency.all.each do |c|
+      capture_and_save(c)
+    end 
+    flash[:notice] = "Updated"
+    redirect_to root_path
   end
 end

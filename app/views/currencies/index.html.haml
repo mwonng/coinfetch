@@ -1,0 +1,29 @@
+%p#notice
+  = notice
+
+%h1 Currencies
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Endpoint
+      %th{colspan:3}
+  %tbody
+    - @currencies.each do |currency|
+      %tr
+        %td 
+          = currency.name
+        %td 
+          = currency.endpoint
+        %td 
+          = link_to 'Show', currency
+        %td
+          = link_to 'Edit', edit_currency_path(currency)
+        %td 
+          = link_to 'Destroy', currency, method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'Home', root_path
+
+= link_to 'New Currency', new_currency_path
+

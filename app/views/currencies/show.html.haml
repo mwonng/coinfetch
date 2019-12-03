@@ -1,0 +1,27 @@
+%p#notice
+  = notice
+
+%p
+  %strong Name:
+  = @currency.name
+%p
+  %strong Endpoint:
+  = @currency.endpoint
+
+%ul
+  - @currency.transactions.order(created_at: :desc).each do |t|
+    %li
+      bid:
+      =t.bid
+
+      last:
+      =t.last
+
+      ask:
+      =t.ask
+
+      trans_time:
+      =t.trans_time
+
+= link_to 'Edit', edit_currency_path(@currency)  |
+= link_to 'Back', currencies_path 

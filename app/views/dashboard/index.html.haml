@@ -1,0 +1,55 @@
+%p#notice
+   = notice
+%h1 Dashboard#index
+
+%p Find me in app/views/dashboard/index.html.erb
+
+%p
+   now you have
+   = @currencies&.count
+   currencies
+
+%table
+   %thead
+      %tr
+         %th Name
+         %th Records
+         %th Latest Ask
+         %th Latest Bid
+         %th Latest last
+         %th 
+   %tbody
+      - @currencies.each do |c|
+         %tr
+            %td 
+               =c.name
+            %td
+               =c.transactions&.count
+            %td
+               =c.transactions&.last&.ask
+            %td
+               =c.transactions&.last&.bid
+            %td
+               =c.transactions&.last&.last
+            %td
+               = link_to 'Show History', c
+
+%ul
+   - @currencies.each do |c|
+      %li 
+         =c.name
+
+         and has
+         =c.transactions&.count
+         records
+
+         latest price:
+         =c.transactions&.last&.ask
+
+         view detail 
+         = link_to 'Show History', c
+
+
+= link_to 'Capture', dashboard_capture_path
+
+= link_to 'New Currency', new_currency_path

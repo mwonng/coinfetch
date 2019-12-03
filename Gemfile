@@ -31,6 +31,7 @@ gem 'httparty','~> 0.17.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem "http"
+gem 'haml'
 
 
 group :development, :test do
